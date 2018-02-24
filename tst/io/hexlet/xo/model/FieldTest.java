@@ -12,14 +12,14 @@ public class FieldTest {
 
     @Test
     public void getSize() {
-        final Field field = new Field();
+        final Field field = new Field(3);
 
         assertEquals(3,field.getSize());
     }
 
     @Test
     public void setFigure() throws InvalidPointException {
-        final Field field = new Field();
+        final Field field = new Field(3);
         final Point inputPoint = new Point(0,0);
         final Figure inputFigure = Figure.O;
         final Figure expectFigure = inputFigure;
@@ -32,7 +32,7 @@ public class FieldTest {
 
     @Test
     public void testGetFigureWhenFigureIsNotSet() throws InvalidPointException {
-        final Field field = new Field();
+        final Field field = new Field(3);
         final Point inputPoint = new Point(0,0);
 
         final Figure actualFigure = field.getFigure(inputPoint);
@@ -42,7 +42,7 @@ public class FieldTest {
 
     @Test
     public void testGetFigureWhenXIsLessZero() {
-        final Field field = new Field();
+        final Field field = new Field(3);
         final Point inputPoint = new Point(-1, 0);
 
         try {
@@ -53,7 +53,7 @@ public class FieldTest {
 
     @Test
     public void testGetFigureWhenYIsLessZero() {
-        final Field field = new Field();
+        final Field field = new Field(3);
         final Point inputPoint = new Point(0, -1);
 
         try {
