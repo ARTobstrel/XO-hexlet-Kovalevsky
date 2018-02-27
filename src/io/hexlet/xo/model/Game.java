@@ -6,13 +6,13 @@ public class Game {
 
     private final Field field;
 
-    private final String name;
+    private final String gameName;
 
-    public Game(final Player[] players, final Field field, final String name) {
+    public Game(final Player[] players, final Field field, final String gameName) {
         this.players = players;
         this.field = field;
 
-        this.name = name;
+        this.gameName = gameName;
     }
 
     public Player[] getPlayers() {
@@ -23,7 +23,7 @@ public class Game {
         return field;
     }
 
-    public String getName() {
-        return name;
+    public String getGameName() {
+        return gameName;
     }
 }
