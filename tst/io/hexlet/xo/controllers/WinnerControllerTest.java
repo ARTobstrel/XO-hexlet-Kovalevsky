@@ -50,14 +50,12 @@ public class WinnerControllerTest {
     @Test
     public void getWinnerWhenNoWinnerColumn() throws Exception {
         final WinnerController winnerController = new WinnerController();
-        for(int i = 0; i < 3; i++) {
-            final Field field = new Field(3);
-            field.setFigure(new Point(0, i), Figure.X);
-            field.setFigure(new Point(1, i), Figure.X);
-            field.setFigure(new Point(2, i), Figure.O);
-            assertNull(winnerController.getWinner(field));
+        final Field field = new Field(3);
+        field.setFigure(new Point(0, 0), Figure.O);
+        field.setFigure(new Point(0, 1), Figure.X);
+        field.setFigure(new Point(0, 2), Figure.O);
+        assertNull(winnerController.getWinner(field));
         }
-    }
 
     @Test
     public void getWinnerWhenWinnerDiag1() throws Exception {
