@@ -29,5 +29,8 @@ public class XOCLI {
 
         final ConsoleView consoleView = new ConsoleView();
         consoleView.show(gameXO);
+        while (consoleView.move(gameXO)){
+            consoleView.show(gameXO);
+        }
     }
 }
