@@ -10,6 +10,7 @@ import io.hexlet.xo.model.exceptions.AlreadyOccupiedException;
 import io.hexlet.xo.model.exceptions.InvalidPointException;
 
 import java.awt.*;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ConsoleView {
@@ -32,16 +33,15 @@ public class ConsoleView {
 
     public boolean move(final Game game) {
         final Field field = game.getField();
+        final Figure winner = winnerController.getWinner(field);
+        if (winner != null) {
+            System.out.printf("Winner is: %s\n", winner);
+            return false;
+        }
         final Figure currentFigure = currentMoveController.currentMove(field);
         if (currentFigure == null){
-            final Figure winner = winnerController.getWinner(field);
-            if (winner == null) {
-                System.out.println("No winner and no moves left!");
-                return false;
-            } else {
-                System.out.printf("Winner is: %s\n", winner);
-                return false;
-            }
+            System.out.println("No winner and no moves left!");
+            return false;
         }
         System.out.printf("Please, enter move point for: %s\n", currentFigure);
         final Point point = askPoint();
@@ -60,7 +60,12 @@ public class ConsoleView {
     private int askCordinate(final String coordinateName) {
         System.out.printf("Please input %s: ", coordinateName);
         final Scanner in = new Scanner(System.in);
-        return in.nextInt();
+        try {
+            return in.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Incorrect input.");
+            return askCordinate(coordinateName);
+        }
     }
 
     private void printLine(final Field field,
