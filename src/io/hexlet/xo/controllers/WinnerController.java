@@ -6,6 +6,8 @@ import io.hexlet.xo.model.exceptions.InvalidPointException;
 
 import java.awt.*;
 
+//Какая то проблема в этом контроллере - не определяет победителя!
+
 public class WinnerController {
 
     public Figure getWinner(final Field field) {
